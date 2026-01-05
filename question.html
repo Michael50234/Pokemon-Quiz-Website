@@ -8,25 +8,28 @@
     </head>
     <body>
         <div id="main-content">
-            <image src="pokemon.jpg">
+            <img  id="bg-image" src="pokemon.jpg">
             <div id="overlay"></div>
 
-            <h3 id="question-num">Question Number: 1/10</h3>
-            <h3 id="score">Score: 0/10</h3>
-
             <div id="inner-content">
-                <div id="headings">
-                    <h1 class="heading">What is this pokemon?</h1> 
+                <div id="header">
+                    <h3 id="question-num">Question Number: 1/10</h3>
+                    <h3 id="score">Score: 0/10</h3>
                 </div>
-
-                <image src="pikachu.jpg" style="display: block;">
-                <div id="answers">
-                    <button>Answer 1</button>
-                    <button>Answer 2</button>
-                    <button>Answer 3</button>
-                    <button> Answer 4</button>
+                
+                <div id="question">
+                    <image src="pikachu.jpg" id="pokemon-sprite" style="display: block;">
+                    <div id="question-ux">
+                        <h1 id="heading">What is this pokemon?</h1> 
+                        <div id="answers">
+                            <button style="grid-area: ans1" class="ans-btn">Answer 1</button>
+                            <button style="grid-area: ans2" class="ans-btn">Answer 2</button>
+                            <button style="grid-area: ans3" class="ans-btn">Answer 3</button>
+                            <button style="grid-area: ans4" class="ans-btn"> Answer 4</button>
+                        </div>
+                        <button id="submit-btn">Submit</button>
+                    </div>
                 </div>
-                <button id="submit-btn">Submit</button>
             </div>
         </div>
         <script src="script.js"></script>

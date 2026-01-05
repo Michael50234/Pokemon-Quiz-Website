@@ -1,0 +1,115 @@
+:root {
+    --bg-overlay: rgba(15, 23, 42, 0.55); 
+    --bg-surface: #f8fafc;              
+    --text-button: #0f172a;           
+    --text-color: #f8fafc;         
+    --accent: #3b82f6;                   
+
+    --border-sm: 4px;
+    --border-md: 8px;
+    --border-lg: 16px;
+    
+    --margin-sm: 1rem;
+    --margin-md: 3rem;
+    --margin-lg: 6rem;
+}
+
+body {
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--text-color);
+    font-family: "Inter", system-ui, sans-serif; 
+}
+
+#main-content {
+    height: 100vh;
+    display: grid;
+}
+
+#overlay {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.3;
+    z-index: 1;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+#bg-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    z-index: 0; 
+    filter: blur(14px);
+    transform: scale(1.1);
+}
+
+#inner-content {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    z-index: 2;
+}
+
+#pokemon-sprite {
+    border-radius: var(--border-lg);
+}
+
+#question {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+#answers {
+    display: grid;
+    gap: var(--margin-sm);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    " ans1 ans2"
+    " ans3 ans4";
+}
+
+#question-ux {
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--margin-md);
+}
+
+.ans-btn {
+    color: var(--text-button);
+    background-color: var(--accent);
+    border-radius: var(--border-lg);
+    font-size: 1.5rem;
+    height: 15rem;
+    width: 30rem;
+}
+
+#header {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: var(--margin-sm);
+    margin-bottom: var(--margin-md);
+}
+
+#heading {
+    font-size: 4rem;
+    color: var(--text-color)
+}
+
+#submit-btn {
+    height: 8rem;
+    width: 14rem;
+    background-color: var(--bg-surface);
+    border-radius: var(--border-md);
+    font-size: 1.5rem;
+}
