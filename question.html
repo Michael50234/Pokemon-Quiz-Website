@@ -1,3 +1,10 @@
+<!--
+
+Delete this after. This is for refernce when using DOM. 
+
+Instead of making a question results page turn the button with the correct answer to yellow and change the question to "The answer is pokemon name"
+-->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,14 +25,18 @@
                 </div>
                 
                 <div id="question">
-                    <image src="pikachu.jpg" id="pokemon-sprite" style="display: block;">
+                    <div id="sprite-container">
+                        <div id="sprite-bg">
+                            <img id="pokemon-sprite" src="pikachu.jpg">
+                        </div>
+                    </div>
                     <div id="question-ux">
-                        <h1 id="heading">What is this pokemon?</h1> 
+                        <h1 id="heading">What is this Pokemon?</h1> 
                         <div id="answers">
-                            <button style="grid-area: ans1" class="ans-btn">Answer 1</button>
-                            <button style="grid-area: ans2" class="ans-btn">Answer 2</button>
-                            <button style="grid-area: ans3" class="ans-btn">Answer 3</button>
-                            <button style="grid-area: ans4" class="ans-btn"> Answer 4</button>
+                            <button id="btn-1" style="grid-area: ans1" class="ans-btn">Answer 1</button>
+                            <button id="btn-2"style="grid-area: ans2" class="ans-btn">Answer 2</button>
+                            <button id="btn-3" style="grid-area: ans3" class="ans-btn">Answer 3</button>
+                            <button id="btn-4" style="grid-area: ans4" class="ans-btn"> Answer 4</button>
                         </div>
                         <button id="submit-btn">Submit</button>
                     </div>

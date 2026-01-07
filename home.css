@@ -1,6 +1,6 @@
 :root {
-    --colour-surface: #E6D8A3;
-    --accent-colour: #5B7FA6;
+    --bg-surface: #E6D8A3;
+    --accent-colour: #3b82f6; 
     --text-color: black;
     --background-color: #0F172A;
 
@@ -59,7 +59,7 @@ body {
 #inner-content{
     padding: var(--margin-sm);
     border-radius: var(--border-lg);
-    background-color: var(--colour-surface);
+    background-color: var(--bg-surface);
     grid-column: 1/2;
     grid-row: 1/2;
     z-index: 2;
@@ -69,18 +69,23 @@ body {
 }
 
 #start {
-    padding: var(--margin-sm) var(--margin-md) var(--margin-sm) var(--margin-md)
-}
-
-#start {
-    font-weight: 800;
-    font-size: 1rem;
+    height: 7rem;
+    width: 14rem;
+    font-size: 1.5rem;
+    font-weight: 600;
     border-radius: var(--margin-sm);
     background-color: var(--accent-colour);
 }
 
 #pokemon-img {
-    height: 50rem;
+    height: 40rem;
     margin: var(--margin-md);
     border-radius: var(--border-sm);
+}
+
+#score {
+    margin-bottom: var(--margin-md);
+    font-size: 2rem;
+    font-weight: 700;
+
 }
