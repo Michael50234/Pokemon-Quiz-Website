@@ -159,6 +159,7 @@ function createQuestionData() {
     })
 }
 
+
 async function startQuiz(){
     //Reset states
 
@@ -185,10 +186,10 @@ function loadQuestion(){
     //Update the main page content
     let mainContent = document.getElementById('main-content');
     mainContent.innerHTML = questionHTML;
-    let scoreHTML = document.getElementById('score');
-    scoreHTML.textContent =  `${score}/10`;
+    let scoreElement = document.getElementById('score');
+    scoreElement.textContent =  `Score: ${score}/10`;
     let questionNumHTML = document.getElementById('question-num');
-    questionNumHTML.textContent = `${questionNumber}/10`;
+    questionNumHTML.textContent = `Question Num: ${questionNumber}/10`;
     
     //Generate answers
     let answerOptions = [];
@@ -224,25 +225,25 @@ function loadQuestion(){
     button4.addEventListener('click', () => userAnswer = button4.textContent);
 
     let submitBtn = document.getElementById('submit-btn');
-    submitBtn.addEventListener('click', loadResult);
+    submitBtn.addEventListener('click', loadResult, {once: true});
 }
 
-// This function changes the qustion page to display the answer
+// Changes the qustion page to display the answer
 function loadResult(){
     //Update score
     if(answer === userAnswer){
         score += 1;
     }
 
-    let score = document.getElementById('score');
-    score.textContent = `${score}/10`;
+    let scoreElement = document.getElementById('score');
+    scoreElement.textContent = `Score: ${score}/10`;
 
     //Change button colours based on correctness
     let correctButton = null;
     let selectedButton = null;
     let btns = document.querySelectorAll('.ans-btn')
     
-    btns.foreach((button) => {
+    btns.forEach((button) => {
         if(button.textContent === answer){
             correctButton = button;
         }
@@ -251,38 +252,52 @@ function loadResult(){
         }
     })
 
-    correctbutton.style.backgroundColor = '#22c55e';
+    correctButton.style.backgroundColor = '#22c55e';
     
     if(selectedButton != correctButton){
         selectedButton.style.backgroundColor = '#ef4444';
     }
 
     //Change heading
-    heading = document.getElementbyId('heading')
+    heading = document.getElementById('heading');
     if(answer === userAnswer){
-        heading.textContent = 'Correct'
+        heading.textContent = 'Correct';
     }
     else{
-        heading.textContent = 'Incorrect'
+        heading.textContent = 'Incorrect';
     }
 
     //Change submit button to next question button
-    let submitBtn = document.getElementById()
-    
+    let submitBtn = document.getElementById('submit-btn');
+    console.log("ran");
+    if(questionIndex != 9){
+        submitBtn.textContent = "Next Question";
+    }
+    else{
+        submitBtn.textContent = "See Results";
+    }
+    submitBtn.addEventListener('click', loadQuestion, {once: true});
 }
 
 // This function loads the result page
 function loadFinalResult(){
-    
+
 }
 
 
 
 //Event Listeners for Welcome Page (Also need these for result page)
-bgVideo.addEventListener('loadedmetadata', () => {
+if (bgVideo.readyState >= 1) {
     bgVideo.currentTime = start;
-    console.log("changed start time");
-})
+    bgVideo.play().catch(() => {});
+    console.log("changed start time (cached)");
+} else {
+    bgVideo.addEventListener('loadedmetadata', () => {
+        bgVideo.currentTime = start;
+        bgVideo.play().catch(() => {});
+        console.log("changed start time");
+    }, { once: true });
+}
 
 bgVideo.addEventListener('timeupdate', () => {
     if (bgVideo.currentTime >= end) {
@@ -290,3 +305,7 @@ bgVideo.addEventListener('timeupdate', () => {
         console.log("new loop");
     }
 })
+
+let startBtn = document.getElementById('start');
+startBtn.addEventListener('click', startQuiz, {once: true});
+console.log('Event Listeners Registered');
