@@ -11,7 +11,7 @@ When the quiz starts, the app:
 
 -Displays Pokémon sprites dynamically
 
-Tracks the user’s score and progress in real time
+-Tracks the user’s score and progress in real time
 
 At the end of the quiz, a results screen is displayed with the final score and an animated background video, allowing the user to restart the quiz.
 
