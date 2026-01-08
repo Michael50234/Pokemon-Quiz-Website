@@ -10,4 +10,4 @@ When the quiz starts, the app:
 
 At the end of the quiz, a results screen is displayed with the final score and an animated background video, allowing the user to restart the quiz.
 
-
+To play the game run home.html.
