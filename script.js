@@ -100,7 +100,6 @@ let score = 0;
 // Video Settings
 let bgVideo = document.getElementById('bg-video');
 let start = 95;
-let end = 114;
 
 //shuffles the items in an array
 function shuffle(array) {
@@ -162,15 +161,17 @@ function createQuestionData() {
 
 async function startQuiz(){
     //Reset states
-
-
+    questionIndex = 0;
+    questionNumber = 0;
+    answer = "";
+    userAnswer = "";
+    score = 0;
 
     //Retrive data
     await retriveData();
     createQuestionData();
 
     loadQuestion();
-    //from here do the regular question workflow
 }
 
 // This functions loads the question page
@@ -272,26 +273,57 @@ function loadResult(){
     console.log("ran");
     if(questionIndex != 9){
         submitBtn.textContent = "Next Question";
+        submitBtn.addEventListener('click', loadQuestion, {once: true});
     }
     else{
         submitBtn.textContent = "See Results";
+        submitBtn.addEventListener('click', loadFinalResult, {once: true});
     }
-    submitBtn.addEventListener('click', loadQuestion, {once: true});
+    
 }
 
 // This function loads the result page
 function loadFinalResult(){
+    //Retrive HTML elements
+    let mainContent = document.getElementById('main-content');
+    mainContent.innerHTML = resultHTML;
+    let styleSheet = document.querySelector('link');
+    styleSheet.href = 'home.css';
+    let scoreElement = document.querySelector('#score');
+    let startButton = document.querySelector('#start');
+    let bgVideo = document.getElementById('bg-video');
 
+    //Change content
+    scoreElement.textContent = `Score: ${score}/10`;
+
+    //Add event listeners
+    startButton.addEventListener('click', startQuiz, {once: true});
+
+    bgVideo.addEventListener(
+    'canplay',
+    () => {
+        bgVideo.currentTime = start;
+        bgVideo.play().catch(() => {});
+        console.log("video started at custom time");
+    },
+    { once: true }
+    );
+
+    bgVideo.addEventListener('timeupdate', () => {
+        if (bgVideo.currentTime >= end) {
+            bgVideo.currentTime = start;
+            console.log("new loop");
+        }
+    });
 }
-
-
 
 //Event Listeners for Welcome Page (Also need these for result page)
 if (bgVideo.readyState >= 1) {
     bgVideo.currentTime = start;
     bgVideo.play().catch(() => {});
     console.log("changed start time (cached)");
-} else {
+} 
+else {
     bgVideo.addEventListener('loadedmetadata', () => {
         bgVideo.currentTime = start;
         bgVideo.play().catch(() => {});
