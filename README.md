@@ -4,6 +4,7 @@ This project is an interactive Pokémon-themed quiz web application built using 
 When the quiz starts, the app:
 
 -Randomly selects Pokémon
+
 -Fetches Pokémon data asynchronously from the PokéAPI
 -Generates multiple-choice questions with randomized answer options
 -Displays Pokémon sprites dynamically
